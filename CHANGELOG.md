@@ -1,5 +1,21 @@
 # Changelog
 
+## TBD
+
+BUG FIXES:
+
+- [rpc] limited number of HTTP/WebSocket connections
+  (`rpc.max_open_connections`) and gRPC connections
+  (`rpc.grpc_max_open_connections`). Check out [Running In
+  Production](https://tendermint.readthedocs.io/en/master/running-in-production.html)
+  guide if you want to increase them.
+  
+## 0.21.2
+
+IMPROVEMENT
+
+- [rpc/client] Supports https and wss now
+
 ## 0.21.0
 
 *June 21th, 2018*
@@ -14,6 +30,13 @@ IMPROVEMENT
 
 - [pubsub] Set default capacity to 0
 - [docs] Various improvements
+
+FEATURES
+
+- [main] added metrics (served under `/metrics` using a Prometheus client;
+  disabled by default). See the new `instrumentation` section in the config and
+  [metrics](https://tendermint.readthedocs.io/projects/tools/en/v0.21.0/metrics.html)
+  guide.
 
 BUG FIXES
 
