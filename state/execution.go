@@ -68,10 +68,11 @@ func (blockExec *BlockExecutor) ValidateBlock(state State, block *types.Block) e
 // from outside this package to process and commit an entire block.
 // It takes a blockID to avoid recomputing the parts hash.
 func (blockExec *BlockExecutor) ApplyBlock(state State, blockID types.BlockID, block *types.Block) (State, error) {
-
+	fmt.Println("Entered BlockExecutor.ApplyBlock")
 	if err := blockExec.ValidateBlock(state, block); err != nil {
 		return state, ErrInvalidBlock(err)
 	}
+	fmt.Println("Pre-check passed")
 
 	abciResponses, err := execBlockOnProxyApp(blockExec.logger, blockExec.proxyApp, block, state.LastValidators, blockExec.db)
 	if err != nil {
