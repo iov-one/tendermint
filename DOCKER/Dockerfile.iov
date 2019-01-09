@@ -18,7 +18,7 @@ RUN apk add --no-cache make git bash && \
 # Final image
 FROM alpine:3.8
 
-ADD build/tendermint /bin/tendermint
+COPY --from=build-env /go/src/github.com/tendermint/tendermint/build/tendermint /bin/tendermint
 
 # Tendermint will be looking for genesis file in /tendermint (unless you change
 # `genesis_file` in config.toml). You can put your config.toml and private
